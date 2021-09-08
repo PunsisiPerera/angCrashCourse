@@ -1,34 +1,11 @@
-    <hr>
-    <h3>Customer Details</h3>
-    <table class="table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>PhoneNo</th>
-            <th>Address</th>
-            <th>Type</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let task of tasks">
-            <td>{{ task.cus_id}}</td>
-            <td>{{ task.name }}</td>
-            <td>{{ task.email}}</td>
-            <td>{{ task.phoneNo}}</td>
-            <td>{{ task.address}}</td>
-            <td>{{ task.type}}</td>
-            <td><app-button 
-                color="green" 
-                text="Edit">
-                </app-button>
-                <app-button 
-                color="red" 
-                text="Delete">
-                </app-button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<app-add-task
+(onAddTask)="addTask($event)"
+>
+</app-add-task>
+<app-task-item 
+*ngFor = "let task of tasks"
+[task]="task"
+(onDeleteTask)="deleteTask(task)"
+(onToggleReminder)="toggleReminder(task)"
+>
+</app-task-item>
